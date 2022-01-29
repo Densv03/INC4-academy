@@ -21,7 +21,7 @@ function strToCamelCase( str) {
      console.log(res.join(''));
 }
 
-showHost(url)
+showHost(url);
 splitStr(url);
 strToCamelCase(newStr);
 
