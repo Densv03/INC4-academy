@@ -1,40 +1,36 @@
-// here will be a lot of string methods
+const url = new URL('https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/');
 
 
-let link = 'https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/';
-
-const removeProtocol = link => {
-    const regex = /\/\/(.*)\/?/;
-    return link.match(regex) ? link.match(regex)[1] : link;
+let newStr;
+function showHost(obj) {
+    console.log(obj.host);
+}
+function splitStr ( str ) {
+    newStr = str.pathname.split('-');
 }
 
-link = removeProtocol(link);
-// Output: inc4.net/what-can-cedefi-bring-to-the-crypto-industry/
 
-const camelCase = link => {
-    const camelizeWord = word => {
-        return word
-            .split('-')
-            .map((word, index) => index === 0 ? word : word[0].toUpperCase() + word.slice(1))
-            .join('');
-    };
-    link = link.split(/\//g).slice(1);
-    link.map((el, index, arr) => {
-        if(el) {
-            return camelizeWord(el);
-        }
-    });
-    return link;
-};
+function strToCamelCase( str) {
+     const res = str.map( item => {
+         if( item[0] === '/') {
+             return item[1].toUpperCase() + item.substring(2);
+         } else{
+            return item[0].toUpperCase() + item.substring(1);
+         }
+     });
+     console.log(res.join(''));
+}
 
-console.log(camelCase('asdsad-asdasd/asdasda-asd/asdasd-adsasdasd/'));
-
-console.log(camelCase(link));
-
-const getDomain = link => link.split('/')[0];
-
-const domain = getDomain(link);
-// Output: inc4.net
+showHost(url)
+splitStr(url);
+strToCamelCase(newStr);
 
 
-// here will be a lot of number methods
+
+
+
+
+
+
+
+// Есть строка ‘’https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/' - вытянуть из этой строки домен, вытянуть название статьи, убрать дефис и каждое слово сделать с заглавной буквы
