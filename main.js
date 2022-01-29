@@ -1,72 +1,90 @@
-// const url = new URL('https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/');
-//
-// function getHost(obj) {
-//     return obj.host;
-// }
-//
-// function strToCamelCase(str) {
-//      const res = str.pathname.split('-').map( item => {
-//          if( item[0] === '/') {
-//              return item[1].toUpperCase() + item.substring(2);
-//          } else{
-//             return item[0].toUpperCase() + item.substring(1);
-//          }
-//      });
-//      return res.join('');
-// }
-//
-// console.log(getHost(url));
-// console.log(strToCamelCase(url));
+const url1 = 'https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/asdasd';
+const url2 = 'https://www.altcoinbuzz.io/cryptocurrency-news/spotlight/binance-ceo-says-defi-will-replace-cefi/';
+const url3 = 'http://localhost';
+const url4 = 'google.com';
 
+const removeProtocol = link => {
+    const regex = /\/\/(.*)\/?/;
+    return link.match(regex) ? link.match(regex)[1].replace(/[\.www]/g, '') : link.replace(/[\.www]/g, '');
+}
+
+const getDomain = link => removeProtocol(link).split('/')[0];
+
+const getPathname = link => link = removeProtocol(link).split('/').filter((el, index) => index && el);
+
+const strToCamelCase = str => str.map((el, index) => index ? el[0].toUpperCase() + el.substring(1) : el).join('');
+
+const printPaths = pathsArr => {
+    if (pathsArr.length === 1) {
+        console.log(pathsArr[0]);
+    } else {
+        pathsArr.forEach((el, index) => {
+            console.log(`${index + 1} level path: ${el}`);
+        });
+    }
+
+}
+
+const pathsArray1 = getPathname(url1).map(el => strToCamelCase(el.split('-')));
+const pathsArray2 = getPathname(url2).map(el => strToCamelCase(el.split('-')));
+
+
+// Paths
+console.log(printPaths(pathsArray1))
+console.log(printPaths(pathsArray2))
+
+
+// Domains
+console.log(getDomain(removeProtocol(url1)));
+console.log(getDomain(removeProtocol(url2)));
+
+//===================================================================
 
 // const str = '   what-can-Cedefi-bring-to-The-crypto-Industry/';
-
-// //Длинна строки
+// // Get string length
 // console.log(str.length);
-// //Обрезаем пробелы
+// // Remove spaces at the beginning and at the end of string
 // console.log(str.trim());
-// //Заканчивается ли строка символом "/"
+// // Return true or false depends on ends string with substring or not
 // console.log(str.endsWith('/'));
-// //Ищем индекс заданного елемента
+// // Find last index of substring in string
 // console.log(str.lastIndexOf('-'));
-// //Содержит ли строка определенный елемент или набор смиволов, слово
+// // Does string includes substring or not
 // console.log(str.includes('defi'));
-// //В верхний регистр
+// // String to upper case
 // console.log(str.toUpperCase());
-// //В нижний регистр
+// // String to lower case
 // console.log(str.toLowerCase());
-// //Возвращаем значение строки
+// // Returns value of string
 // console.log(str.valueOf());
-// //Разбивает строку на массив значений по заданному параметру
+// // Split string by substring
 // console.log(str.split('-'));
-// //Возвращает новую строку с извлечением значений начиная с начально заданного
-// //индекса и заканчивая конечно заданным индексом
+// // Returns a shallow copy of a portion of an array into a new array object selected from start to end
 // console.log(str.slice(14,18));
-// //Возвращение формы нормализации Юникода данной строки
-// console.log(str.normalize('NFC'));
-// // Возвращает новую строку с извлечением значений начиная с начально заданного
-// // индекса и заканчивая конечно заданным индексом
+// // Returns a part of a given string
 // console.log(str.substring(14,18));
-// //Возвращает новую строку, содержащую указанное количество соединённых  копий строки
+// // Returns a new string which contains the specified number of copies of the string
 // console.log(str.repeat(2));
+
+//===================================================================
 
 // const number = 1372.357;
 
-// //Обрезаем количество цифр после запятой
+// // Formats a number using fixed-point notation
 // console.log(number.toFixed(1));
-// //Превращает число в строку
+// // Returns a string representing the specified Number object
 // console.log( number.toString());
-// //Возвращает значение числа
+// // Returns the primitive value of a String object
 // console.log(number.valueOf());
-// //Определяет является ли числ целым
+// // Determines whether the passed value is an integer
 // console.log(Number.isInteger(number));
-// //Определяет, является ли переданное значение конечным числом.
+// // Determines whether the passed value is a finite number
 // console.log(Number.isFinite(number));
-// //Возвращает строку, представляющую объект Number в экспоненциальной записи.
+// // Returns a string representing the Number object in exponential notation.
 // console.log(number.toExponential());
-// //Возвращает число с заданной точностью
+// // Returns a string representing the Number object to the specified precision
 // console.log(number.toPrecision(5));
-// //Проверяет является ли значение NaN
+// // Determines whether a value is NaN or not
 // console.log(Number.isNaN(number));
-// //Определяет является ли заданное число безопасным целым числом
+// // Determines whether the provided value is a number that is a safe integer.
 // console.log(Number.isSafeInteger(number));
