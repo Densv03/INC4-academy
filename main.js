@@ -1,26 +1,22 @@
-const url = new URL('https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/');
-
-function getHost(obj) {
-    return obj.host;
-}
-
-function strToCamelCase(str) {
-     const res = str.pathname.split('-').map( item => {
-         if( item[0] === '/') {
-             return item[1].toUpperCase() + item.substring(2);
-         } else{
-            return item[0].toUpperCase() + item.substring(1);
-         }
-     });
-     return res.join('');
-}
-
-console.log(getHost(url));
-console.log(strToCamelCase(url));
-
-
-
-
+// const url = new URL('https://inc4.net/what-can-cedefi-bring-to-the-crypto-industry/');
+//
+// function getHost(obj) {
+//     return obj.host;
+// }
+//
+// function strToCamelCase(str) {
+//      const res = str.pathname.split('-').map( item => {
+//          if( item[0] === '/') {
+//              return item[1].toUpperCase() + item.substring(2);
+//          } else{
+//             return item[0].toUpperCase() + item.substring(1);
+//          }
+//      });
+//      return res.join('');
+// }
+//
+// console.log(getHost(url));
+// console.log(strToCamelCase(url));
 
 
 // const str = '   what-can-Cedefi-bring-to-The-crypto-Industry/';
